@@ -75,7 +75,7 @@ public final class TracerParameters {
 
     if (params.containsKey(COLLECTOR_PORT)) {
       Integer value = toInteger(params.get(COLLECTOR_PORT));
-      if (value != null && value > 0)
+      if (validatePort(value))
         opts.withCollectorPort(value);
     }
 
@@ -161,6 +161,15 @@ public final class TracerParameters {
   private static boolean validateProtocol(String value) {
     if (!HTTPS.equals(value) && !HTTP.equals(value)) {
       logger.log(Level.WARNING, "Failed to validate protocol value '" + value + "'");
+      return false;
+    }
+
+    return true;
+  }
+
+  private static boolean validatePort(Integer value) {
+    if (value == null || value <= 0) {
+      logger.log(Level.WARNING, "Failed to validate port value '" + value + "'");
       return false;
     }
 
