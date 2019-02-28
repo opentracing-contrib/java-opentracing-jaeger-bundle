@@ -18,6 +18,10 @@ java -cp:$MYCLASSPATH:lightstep.jar \
 	com.mycompany.MyService
 ```
 
+## Implementation
+
+`lightstep-okhttp` is bundled and used as the collector to send Spans to the backend.
+
 ## Parameters
 
 LightStep Tracer parameters use the prefix `ls.`. The only required parameter is `ls.accessToken`, and no Tracer will be created if this parameter is missing. In case of error, a log showing the error will be shown.

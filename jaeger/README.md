@@ -5,3 +5,7 @@ This section uses the `TracerResolver` support defined as part of Jaeger, which 
 If a `tracer.properties` file is defined, the listed parameters will exported as System properties (as long as they are not **already** defined).
 
 `JAEGER_SERVICE_NAME` is the only required parameter.
+
+## Implementation
+
+The `jaeger-thrift` artifact is bundled as the selected component to send Spans to the backend.
