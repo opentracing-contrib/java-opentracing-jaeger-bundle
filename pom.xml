@@ -18,7 +18,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>io.opentracing.contrib</groupId>
-  <artifactId>java-specialagent-tracers-parent</artifactId>
+  <artifactId>java-tracers-parent</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
 
@@ -36,9 +36,9 @@
     <junit.version>4.11</junit.version>
   </properties>
 
-  <name>SpecialAgent Tracers (Parent)</name>
-  <description>SpecialAgent client Tracers support</description>
-  <url>https://github.com/carlosalberto/java-specialagent-tracers</url>
+  <name>OpenTracing Java Tracers (Parent)</name>
+  <description>OpenTracing client Tracers</description>
+  <url>https://github.com/opentracing-contrib/java-tracers</url>
   <inceptionYear>2019</inceptionYear>
 
   <licenses>
@@ -50,9 +50,9 @@
   </licenses>
 
   <scm>
-    <url>https://github.com/carlosalberto/java-specialagent-tracers</url>
-    <connection>scm:git:https://github.com/carlosalberto/java-specialagent-tracers.git</connection>
-    <developerConnection>scm:git:https://github.com/carlosalberto/java-specialagent-tracers.git</developerConnection>
+    <url>https://github.com/opentracing-contrib/java-tracers</url>
+    <connection>scm:git:https://github.com/opentracing-contrib/java-tracers.git</connection>
+    <developerConnection>scm:git:https://github.com/opentracing-contrib/java-tracers.git</developerConnection>
     <tag>HEAD</tag>
   </scm>
 
@@ -66,14 +66,14 @@
 
   <issueManagement>
     <system>Github</system>
-    <url>https://github.com/carlosalberto/java-specialagent-tracers/issues</url>
+    <url>https://github.com/opentracing-contrib/java-tracers/issues</url>
   </issueManagement>
 
   <dependencyManagement>
     <dependencies>
       <dependency>
         <groupId>${project.groupId}</groupId>
-        <artifactId>java-specialagent-tracers-common</artifactId>
+        <artifactId>java-tracers-common</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
@@ -100,6 +100,19 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+
+  <distributionManagement>
+    <snapshotRepository>
+      <id>sonatype-snapshot</id>
+      <name>Sonatype Snapshot Repository</name>
+      <url>http://oss.sonatype.org/content/repositories/snapshots</url>
+    </snapshotRepository>
+    <repository>
+      <id>sonatype-staging</id>
+      <name>Sonatype Staging Repository</name>
+      <url>http://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+    </repository>
+  </distributionManagement>
 
   <build>
     <pluginManagement>

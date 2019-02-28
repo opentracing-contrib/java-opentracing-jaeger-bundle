@@ -20,13 +20,13 @@
 
   <parent>
     <groupId>io.opentracing.contrib</groupId>
-    <artifactId>java-specialagent-tracers-parent</artifactId>
+    <artifactId>java-tracers-parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
 
-  <artifactId>java-specialagent-lightstep</artifactId>
-  <name>SpecialAgent LightStep Tracer plugin</name>
-  <url>https://github.com/carlosalberto/java-specialagent-tracers</url>
+  <artifactId>java-lightstep</artifactId>
+  <name>LightStep Tracer bundle</name>
+  <url>https://github.com/opentracing-contrib/java-tracers</url>
 
   <properties>
     <tracerresolver.version>0.1.5</tracerresolver.version>
@@ -37,7 +37,7 @@
   <dependencies>
     <dependency>
       <groupId>${project.groupId}</groupId>
-      <artifactId>java-specialagent-tracers-common</artifactId>
+      <artifactId>java-tracers-common</artifactId>
     </dependency>
     <dependency>
       <groupId>io.opentracing.contrib</groupId>
@@ -57,7 +57,6 @@
   </dependencies>
 
   <build>
-    <finalName>lightstep</finalName>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>

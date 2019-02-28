@@ -20,12 +20,12 @@
 
   <parent>
     <groupId>io.opentracing.contrib</groupId>
-    <artifactId>java-specialagent-tracers-parent</artifactId>
+    <artifactId>java-tracers-parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
 
-  <artifactId>java-specialagent-tracers-common</artifactId>
-  <name>SpecialAgent common Tracers layer</name>
-  <url>https://github.com/carlosalberto/java-specialagent-tracers</url>
+  <artifactId>java-tracers-common</artifactId>
+  <name>Common Tracers layer</name>
+  <url>https://github.com/opentracing-contrib/java-tracers</url>
 
 </project>
