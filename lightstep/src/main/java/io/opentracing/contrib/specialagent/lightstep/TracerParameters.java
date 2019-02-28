@@ -16,6 +16,10 @@ public final class TracerParameters {
   final static String HTTP = "http";
   final static String HTTPS = "https";
 
+  final static String DEFAULT_COLLECTOR_HOST = "collector.lightstep.com";
+  final static String DEFAULT_COLLECTOR_PROTOCOL = HTTPS;
+  final static int DEFAULT_COLLECTOR_PORT = 443;
+
   // TODO: add metaEventLogging, propagator, scopeManager and tags parameters.
   public final static String ACCESS_TOKEN = "ls.accessToken";
   public final static String CLOCK_SKEW_CORRECTION = "ls.clockSkewCorrection";
@@ -54,6 +58,12 @@ public final class TracerParameters {
 
     Options.OptionsBuilder opts = new Options.OptionsBuilder()
       .withAccessToken(params.get(ACCESS_TOKEN));
+
+    // As we use the okhttp collector, do override default values properly:
+    opts
+      .withCollectorHost(DEFAULT_COLLECTOR_HOST)
+      .withCollectorProtocol(DEFAULT_COLLECTOR_PROTOCOL)
+      .withCollectorPort(DEFAULT_COLLECTOR_PORT);
 
     if (params.containsKey(CLOCK_SKEW_CORRECTION))
       opts.withClockSkewCorrection(toBoolean(params.get(CLOCK_SKEW_CORRECTION)));

@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.Properties;
 import java.util.Map;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import io.opentracing.contrib.specialagent.common.Configuration;
@@ -19,6 +20,14 @@ public final class TracerParametersTest {
   final static String COLLECTOR_HOST = "127.0.0.1";
   final static String COLLECTOR_PROTOCOL = "http";
   final static String COLLECTOR_PORT = "666";
+
+  @Before
+  public void beforeTest() {
+    // Clear all the parameters.
+    System.clearProperty(Configuration.CONFIGURATION_FILE_KEY);
+    for (String paramName: TracerParameters.ALL)
+      System.clearProperty(paramName);
+  }
 
   @Test
   public void getParameters_fromSystemProperties() {
