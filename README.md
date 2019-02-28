@@ -4,7 +4,7 @@
 
 OpenTracing-compliant Tracer bundles.
 
-This project builds a fat-jar of each supported Tracer, along with simple configuration, in order to ease deployment, which can then be retrieved using the `TracerResolver` pattern (from java-tracerresolver).
+This project builds a fat-jar of each supported Tracer, along with simple configuration, in order to ease deployment, which can then be retrieved using the `TracerResolver` pattern (from [java-tracerresolver](https://github.com/opentracing-contrib/java-tracerresolver) ).
 
 * [Jaeger](./jaeger)
 * [LightStep](./lightstep)
