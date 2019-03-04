@@ -20,12 +20,12 @@
 
   <parent>
     <groupId>io.opentracing.contrib</groupId>
-    <artifactId>java-tracers-parent</artifactId>
+    <artifactId>java-opentracing-tracers-parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
 
-  <artifactId>java-tracers-common</artifactId>
-  <name>Common Tracers layer</name>
-  <url>https://github.com/opentracing-contrib/java-tracers</url>
+  <artifactId>java-opentracing-tracers-common</artifactId>
+  <name>Common Tracers Bundles layer</name>
+  <url>https://github.com/opentracing-contrib/java-opentracing-lightstep</url>
 
 </project>

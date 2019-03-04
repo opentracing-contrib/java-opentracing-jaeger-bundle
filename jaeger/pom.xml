@@ -20,13 +20,13 @@
 
   <parent>
     <groupId>io.opentracing.contrib</groupId>
-    <artifactId>java-tracers-parent</artifactId>
+    <artifactId>java-opentracing-tracers-parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
 
   <artifactId>java-jaeger</artifactId>
   <name>Jaeger Tracer bundle</name>
-  <url>https://github.com/opentracing-contrib/java-tracers</url>
+  <url>https://github.com/opentracing-contrib/java-opentracing-lightstep</url>
 
   <properties>
     <jaeger.version>0.33.1</jaeger.version>
@@ -35,7 +35,7 @@
   <dependencies>
     <dependency>
       <groupId>${project.groupId}</groupId>
-      <artifactId>java-tracers-common</artifactId>
+      <artifactId>java-opentracing-tracers-common</artifactId>
     </dependency>
     <dependency>
       <groupId>io.jaegertracing</groupId>

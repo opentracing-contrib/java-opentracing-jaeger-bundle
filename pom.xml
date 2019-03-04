@@ -18,7 +18,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>io.opentracing.contrib</groupId>
-  <artifactId>java-tracers-parent</artifactId>
+  <artifactId>java-opentracing-tracers-parent</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
 
@@ -36,9 +36,9 @@
     <junit.version>4.11</junit.version>
   </properties>
 
-  <name>OpenTracing Java Tracers (Parent)</name>
-  <description>OpenTracing client Tracers</description>
-  <url>https://github.com/opentracing-contrib/java-tracers</url>
+  <name>OpenTracing Java Tracer Bundles (Parent)</name>
+  <description>OpenTracing Java Tracer Bundles</description>
+  <url>https://github.com/opentracing-contrib/java-opentracing-lightstep</url>
   <inceptionYear>2019</inceptionYear>
 
   <licenses>
@@ -50,9 +50,9 @@
   </licenses>
 
   <scm>
-    <url>https://github.com/opentracing-contrib/java-tracers</url>
-    <connection>scm:git:https://github.com/opentracing-contrib/java-tracers.git</connection>
-    <developerConnection>scm:git:https://github.com/opentracing-contrib/java-tracers.git</developerConnection>
+    <url>https://github.com/opentracing-contrib/java-opentracing-lightstep</url>
+    <connection>scm:git:https://github.com/opentracing-contrib/java-opentracing-lightstep.git</connection>
+    <developerConnection>scm:git:https://github.com/opentracing-contrib/java-opentracing-lightstep.git</developerConnection>
     <tag>HEAD</tag>
   </scm>
 
@@ -66,14 +66,14 @@
 
   <issueManagement>
     <system>Github</system>
-    <url>https://github.com/opentracing-contrib/java-tracers/issues</url>
+    <url>https://github.com/opentracing-contrib/java-opentracing-lightstep/issues</url>
   </issueManagement>
 
   <dependencyManagement>
     <dependencies>
       <dependency>
         <groupId>${project.groupId}</groupId>
-        <artifactId>java-tracers-common</artifactId>
+        <artifactId>java-opentracing-tracers-common</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
