@@ -1,10 +1,10 @@
 [![Build Status](https://travis-ci.org/opentracing-contrib/java-tracers.png)](https://travis-ci.org/opentracing-contrib/java-tracers)
 
-# Java LightStep Tracer Bundle
+# OpenTracing LightStep Tracer Bundle
 
-Java [LightStep Tracer](https://github.com/lightstep/lightstep-tracer-java) Bundle.
+OpenTracing [LightStep Tracer](https://github.com/lightstep/lightstep-tracer-java) Bundle.
 
-This project builds a fat-jar with all its dependencies, along with simple configuration, in order to ease deployment, which can then be retrieved using the `TracerFactory` pattern (from [java-tracerresolver](https://github.com/opentracing-contrib/java-tracerresolver) ).
+This project builds a fat-jar with all its dependencies, along with simple configuration, in order to ease deployment, which can then be retrieved using the `TracerFactory` pattern (from [java-tracerresolver](https://github.com/opentracing-contrib/java-tracerresolver) ). It can be used with any OpenTracing instrumentation library.
 
 * [LightStep](./lightstep)
 * [Jaeger](./jaeger) (extra included, for testing purposes).
