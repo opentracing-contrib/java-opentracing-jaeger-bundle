@@ -18,14 +18,13 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>io.opentracing.contrib</groupId>
-  <artifactId>java-opentracing-tracers-parent</artifactId>
+  <artifactId>java-opentracing-jaeger-parent</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <modules>
     <module>common</module>
     <module>jaeger</module>
-    <module>lightstep</module>
   </modules>
 
   <properties>
@@ -36,9 +35,9 @@
     <junit.version>4.11</junit.version>
   </properties>
 
-  <name>OpenTracing Java Tracer Bundles (Parent)</name>
-  <description>OpenTracing Java Tracer Bundles</description>
-  <url>https://github.com/opentracing-contrib/java-opentracing-lightstep</url>
+  <name>OpenTracing Jaeger Tracer Bundle (Parent)</name>
+  <description>OpenTracing Jaeger Tracer Bundle</description>
+  <url>https://github.com/opentracing-contrib/java-opentracing-jaeger</url>
   <inceptionYear>2019</inceptionYear>
 
   <licenses>
@@ -50,9 +49,9 @@
   </licenses>
 
   <scm>
-    <url>https://github.com/opentracing-contrib/java-opentracing-lightstep</url>
-    <connection>scm:git:https://github.com/opentracing-contrib/java-opentracing-lightstep.git</connection>
-    <developerConnection>scm:git:https://github.com/opentracing-contrib/java-opentracing-lightstep.git</developerConnection>
+    <url>https://github.com/opentracing-contrib/java-opentracing-jaeger</url>
+    <connection>scm:git:https://github.com/opentracing-contrib/java-opentracing-jaeger.git</connection>
+    <developerConnection>scm:git:https://github.com/opentracing-contrib/java-opentracing-jaeger.git</developerConnection>
     <tag>HEAD</tag>
   </scm>
 
@@ -66,14 +65,14 @@
 
   <issueManagement>
     <system>Github</system>
-    <url>https://github.com/opentracing-contrib/java-opentracing-lightstep/issues</url>
+    <url>https://github.com/opentracing-contrib/java-opentracing-jaeger/issues</url>
   </issueManagement>
 
   <dependencyManagement>
     <dependencies>
       <dependency>
         <groupId>${project.groupId}</groupId>
-        <artifactId>java-opentracing-tracers-common</artifactId>
+        <artifactId>java-opentracing-jaeger-common</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>

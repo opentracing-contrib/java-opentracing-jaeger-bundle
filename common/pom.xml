@@ -20,12 +20,11 @@
 
   <parent>
     <groupId>io.opentracing.contrib</groupId>
-    <artifactId>java-opentracing-tracers-parent</artifactId>
+    <artifactId>java-opentracing-jaeger-parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
 
-  <artifactId>java-opentracing-tracers-common</artifactId>
+  <artifactId>java-opentracing-jaeger-common</artifactId>
   <name>Common Tracers Bundles layer</name>
-  <url>https://github.com/opentracing-contrib/java-opentracing-lightstep</url>
 
 </project>
