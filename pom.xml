@@ -45,7 +45,7 @@
 
   <name>OpenTracing Jaeger Tracer Bundle (Parent)</name>
   <description>OpenTracing Jaeger Tracer Bundle</description>
-  <url>https://github.com/opentracing-contrib/java-opentracing-jaeger</url>
+  <url>https://github.com/opentracing-contrib/java-opentracing-jaeger-bundle</url>
   <inceptionYear>2019</inceptionYear>
 
   <licenses>
@@ -57,9 +57,9 @@
   </licenses>
 
   <scm>
-    <url>https://github.com/opentracing-contrib/java-opentracing-jaeger</url>
-    <connection>scm:git:https://github.com/opentracing-contrib/java-opentracing-jaeger.git</connection>
-    <developerConnection>scm:git:https://github.com/opentracing-contrib/java-opentracing-jaeger.git</developerConnection>
+    <url>https://github.com/opentracing-contrib/java-opentracing-jaeger-bundle</url>
+    <connection>scm:git:https://github.com/opentracing-contrib/java-opentracing-jaeger-bundle.git</connection>
+    <developerConnection>scm:git:https://github.com/opentracing-contrib/java-opentracing-jaeger-bundle.git</developerConnection>
     <tag>HEAD</tag>
   </scm>
 
@@ -73,7 +73,7 @@
 
   <issueManagement>
     <system>Github</system>
-    <url>https://github.com/opentracing-contrib/java-opentracing-jaeger/issues</url>
+    <url>https://github.com/opentracing-contrib/java-opentracing-jaeger-bundle/issues</url>
   </issueManagement>
 
   <distributionManagement>
