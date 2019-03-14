@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/opentracing-contrib/java-opentracing-jaeger.png)](https://travis-ci.org/opentracing-contrib/java-opentracing-jaeger)
+[![Build Status](https://travis-ci.org/opentracing-contrib/java-opentracing-jaeger-bundle.png)](https://travis-ci.org/opentracing-contrib/java-opentracing-jaeger-bundle)
 
 # OpenTracing Jaeger Tracer Bundle
 
