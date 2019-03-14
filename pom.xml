@@ -18,27 +18,34 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>io.opentracing.contrib</groupId>
-  <artifactId>java-opentracing-tracers-parent</artifactId>
+  <artifactId>java-opentracing-jaeger-parent</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <modules>
     <module>common</module>
     <module>jaeger</module>
-    <module>lightstep</module>
   </modules>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.7</maven.compiler.source>
     <maven.compiler.target>1.7</maven.compiler.target>
+    <maven-install-plugin.version>2.5.2</maven-install-plugin.version>
+    <maven-source-plugin.version>3.0.1</maven-source-plugin.version>
+    <maven-javadoc-plugin.version>2.10.4</maven-javadoc-plugin.version>
+    <maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>
+    <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
+    <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
+
     <javax.annotation.version>1.3.2</javax.annotation.version>
     <junit.version>4.11</junit.version>
+    <centralsync-maven-plugin.version>0.1.0</centralsync-maven-plugin.version>
   </properties>
 
-  <name>OpenTracing Java Tracer Bundles (Parent)</name>
-  <description>OpenTracing Java Tracer Bundles</description>
-  <url>https://github.com/opentracing-contrib/java-opentracing-lightstep</url>
+  <name>OpenTracing Jaeger Tracer Bundle (Parent)</name>
+  <description>OpenTracing Jaeger Tracer Bundle</description>
+  <url>https://github.com/opentracing-contrib/java-opentracing-jaeger</url>
   <inceptionYear>2019</inceptionYear>
 
   <licenses>
@@ -50,9 +57,9 @@
   </licenses>
 
   <scm>
-    <url>https://github.com/opentracing-contrib/java-opentracing-lightstep</url>
-    <connection>scm:git:https://github.com/opentracing-contrib/java-opentracing-lightstep.git</connection>
-    <developerConnection>scm:git:https://github.com/opentracing-contrib/java-opentracing-lightstep.git</developerConnection>
+    <url>https://github.com/opentracing-contrib/java-opentracing-jaeger</url>
+    <connection>scm:git:https://github.com/opentracing-contrib/java-opentracing-jaeger.git</connection>
+    <developerConnection>scm:git:https://github.com/opentracing-contrib/java-opentracing-jaeger.git</developerConnection>
     <tag>HEAD</tag>
   </scm>
 
@@ -66,14 +73,25 @@
 
   <issueManagement>
     <system>Github</system>
-    <url>https://github.com/opentracing-contrib/java-opentracing-lightstep/issues</url>
+    <url>https://github.com/opentracing-contrib/java-opentracing-jaeger/issues</url>
   </issueManagement>
+
+  <distributionManagement>
+    <repository>
+      <id>bintray</id>
+      <url>https://api.bintray.com/maven/opentracing/maven/opentracing-jaeger-client-bundle/;publish=1</url>
+    </repository>
+    <snapshotRepository>
+      <id>jfrog-snapshots</id>
+      <url>http://oss.jfrog.org/artifactory/oss-snapshot-local</url>
+    </snapshotRepository>
+  </distributionManagement>
 
   <dependencyManagement>
     <dependencies>
       <dependency>
         <groupId>${project.groupId}</groupId>
-        <artifactId>java-opentracing-tracers-common</artifactId>
+        <artifactId>java-opentracing-jaeger-common</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
@@ -101,22 +119,16 @@
     </dependency>
   </dependencies>
 
-  <distributionManagement>
-    <snapshotRepository>
-      <id>sonatype-snapshot</id>
-      <name>Sonatype Snapshot Repository</name>
-      <url>http://oss.sonatype.org/content/repositories/snapshots</url>
-    </snapshotRepository>
-    <repository>
-      <id>sonatype-staging</id>
-      <name>Sonatype Staging Repository</name>
-      <url>http://oss.sonatype.org/service/local/staging/deploy/maven2</url>
-    </repository>
-  </distributionManagement>
-
   <build>
     <pluginManagement>
       <plugins>
+        <!-- mvn -N io.takari:maven:wrapper -Dmaven=3.5.0 -->
+        <plugin>
+          <groupId>io.takari</groupId>
+          <artifactId>maven</artifactId>
+          <version>${maven-plugin.version}</version>
+        </plugin>
+
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-shade-plugin</artifactId>
@@ -132,6 +144,78 @@
         </plugin>
       </plugins>
     </pluginManagement>
+
+    <plugins>
+      <!-- Ensures checksums are added to published jars -->
+      <plugin>
+	<artifactId>maven-install-plugin</artifactId>
+	<version>${maven-install-plugin.version}</version>
+	<configuration>
+	  <createChecksum>true</createChecksum>
+	</configuration>
+      </plugin>
+      <plugin>
+	<artifactId>maven-release-plugin</artifactId>
+	<version>${maven-release-plugin.version}</version>
+	<configuration>
+	  <useReleaseProfile>false</useReleaseProfile>
+	  <releaseProfiles>release</releaseProfiles>
+	  <autoVersionSubmodules>true</autoVersionSubmodules>
+	  <tagNameFormat>@{project.version}</tagNameFormat>
+	</configuration>
+      </plugin>
+      <plugin>
+	<groupId>io.zipkin.centralsync-maven-plugin</groupId>
+	<artifactId>centralsync-maven-plugin</artifactId>
+	<version>${centralsync-maven-plugin.version}</version>
+	<configuration>
+	  <subject>opentracing</subject>
+	  <repo>maven</repo>
+	  <packageName>opentracing-java</packageName>
+	</configuration>
+      </plugin>
+    </plugins>
+
   </build>
+
+  <profiles>
+    <profile>
+      <id>release</id>
+      <build>
+	<plugins>
+	  <!-- Creates source jar -->
+	  <plugin>
+	    <artifactId>maven-source-plugin</artifactId>
+	    <version>${maven-source-plugin.version}</version>
+	    <executions>
+	      <execution>
+		<id>attach-sources</id>
+		<goals>
+		  <goal>jar</goal>
+		</goals>
+	      </execution>
+	    </executions>
+	  </plugin>
+	  <!-- Creates javadoc jar -->
+	  <plugin>
+	    <artifactId>maven-javadoc-plugin</artifactId>
+	    <version>${maven-javadoc-plugin.version}</version>
+	    <configuration>
+	      <failOnError>false</failOnError>
+	    </configuration>
+	    <executions>
+	      <execution>
+		<id>attach-javadocs</id>
+		<goals>
+		  <goal>jar</goal>
+		</goals>
+		<phase>package</phase>
+	      </execution>
+	    </executions>
+	  </plugin>
+	</plugins>
+      </build>
+    </profile>
+  </profiles>
 
 </project>
