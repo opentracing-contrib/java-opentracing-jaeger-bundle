@@ -27,7 +27,7 @@
   <name>Jaeger Client Bundle</name>
 
   <properties>
-    <jaeger.version>0.33.1</jaeger.version>
+    <jaeger.version>0.35.1</jaeger.version>
   </properties>
 
   <dependencies>
