@@ -34,11 +34,13 @@
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>java-opentracing-jaeger-common</artifactId>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>io.jaegertracing</groupId>
       <artifactId>jaeger-client</artifactId>
       <version>${jaeger.version}</version>
+      <scope>provided</scope>
     </dependency>
   </dependencies>
 
@@ -46,7 +48,7 @@
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-shade-plugin</artifactId>
+        <artifactId>maven-assembly-plugin</artifactId>
       </plugin>
     </plugins>
   </build>
