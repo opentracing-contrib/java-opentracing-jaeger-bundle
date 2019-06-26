@@ -111,6 +111,7 @@
     <dependency>
       <groupId>javax.annotation</groupId>
       <artifactId>javax.annotation-api</artifactId>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>junit</groupId>
@@ -131,14 +132,21 @@
 
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-shade-plugin</artifactId>
-          <version>3.2.1</version>
+          <artifactId>maven-assembly-plugin</artifactId>
+          <version>3.1.1</version>
           <executions>
             <execution>
+              <id>jar-with-dependencies</id>
               <phase>package</phase>
               <goals>
-                <goal>shade</goal>
+                <goal>single</goal>
               </goals>
+              <configuration>
+                <descriptors>
+                  <descriptor>assembly.xml</descriptor>
+                </descriptors>
+                <appendAssemblyId>false</appendAssemblyId>
+              </configuration>
             </execution>
           </executions>
         </plugin>
@@ -148,72 +156,71 @@
     <plugins>
       <!-- Ensures checksums are added to published jars -->
       <plugin>
-	<artifactId>maven-install-plugin</artifactId>
-	<version>${maven-install-plugin.version}</version>
-	<configuration>
-	  <createChecksum>true</createChecksum>
-	</configuration>
+      	<artifactId>maven-install-plugin</artifactId>
+      	<version>${maven-install-plugin.version}</version>
+      	<configuration>
+      	  <createChecksum>true</createChecksum>
+      	</configuration>
       </plugin>
       <plugin>
-	<artifactId>maven-release-plugin</artifactId>
-	<version>${maven-release-plugin.version}</version>
-	<configuration>
-	  <useReleaseProfile>false</useReleaseProfile>
-	  <releaseProfiles>release</releaseProfiles>
-	  <autoVersionSubmodules>true</autoVersionSubmodules>
-	  <tagNameFormat>@{project.version}</tagNameFormat>
-	</configuration>
+      	<artifactId>maven-release-plugin</artifactId>
+      	<version>${maven-release-plugin.version}</version>
+      	<configuration>
+      	  <useReleaseProfile>false</useReleaseProfile>
+      	  <releaseProfiles>release</releaseProfiles>
+      	  <autoVersionSubmodules>true</autoVersionSubmodules>
+      	  <tagNameFormat>@{project.version}</tagNameFormat>
+      	</configuration>
       </plugin>
       <plugin>
-	<groupId>io.zipkin.centralsync-maven-plugin</groupId>
-	<artifactId>centralsync-maven-plugin</artifactId>
-	<version>${centralsync-maven-plugin.version}</version>
-	<configuration>
-	  <subject>opentracing</subject>
-	  <repo>maven</repo>
+      	<groupId>io.zipkin.centralsync-maven-plugin</groupId>
+      	<artifactId>centralsync-maven-plugin</artifactId>
+      	<version>${centralsync-maven-plugin.version}</version>
+      	<configuration>
+      	  <subject>opentracing</subject>
+      	  <repo>maven</repo>
           <packageName>opentracing-jaeger-client-bundle</packageName>
-	</configuration>
+      	</configuration>
       </plugin>
     </plugins>
-
   </build>
 
   <profiles>
     <profile>
       <id>release</id>
       <build>
-	<plugins>
-	  <!-- Creates source jar -->
-	  <plugin>
-	    <artifactId>maven-source-plugin</artifactId>
-	    <version>${maven-source-plugin.version}</version>
-	    <executions>
-	      <execution>
-		<id>attach-sources</id>
-		<goals>
-		  <goal>jar</goal>
-		</goals>
-	      </execution>
-	    </executions>
-	  </plugin>
-	  <!-- Creates javadoc jar -->
-	  <plugin>
-	    <artifactId>maven-javadoc-plugin</artifactId>
-	    <version>${maven-javadoc-plugin.version}</version>
-	    <configuration>
-	      <failOnError>false</failOnError>
-	    </configuration>
-	    <executions>
-	      <execution>
-		<id>attach-javadocs</id>
-		<goals>
-		  <goal>jar</goal>
-		</goals>
-		<phase>package</phase>
-	      </execution>
-	    </executions>
-	  </plugin>
-	</plugins>
+      	<plugins>
+      	  <!-- Creates source jar -->
+      	  <plugin>
+      	    <artifactId>maven-source-plugin</artifactId>
+      	    <version>${maven-source-plugin.version}</version>
+      	    <executions>
+      	      <execution>
+            		<id>attach-sources</id>
+            		<goals>
+            		  <goal>jar</goal>
+            		</goals>
+      	      </execution>
+      	    </executions>
+      	  </plugin>
+      	  <!-- Creates javadoc jar -->
+      	  <plugin>
+      	    <artifactId>maven-javadoc-plugin</artifactId>
+      	    <version>${maven-javadoc-plugin.version}</version>
+      	    <configuration>
+      	      <failOnError>false</failOnError>
+      	    </configuration>
+      	    <executions>
+      	      <execution>
+            		<id>attach-javadocs</id>
+            		<goals>
+            		  <goal>jar</goal>
+            		</goals>
+            		<phase>package</phase>
+      	      </execution>
+      	    </executions>
+      	  </plugin>
+      	</plugins>
       </build>
     </profile>
   </profiles>
